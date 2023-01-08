@@ -1,0 +1,22 @@
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import articleContent from './article-content';
+const Article = () => {
+    const { name }=useParams();
+    const article=articleContent.find((article)=>article.name===name);
+    if (!article) return <h1>Article Not Found</h1>;
+  return (
+    <div>
+        <h1 className='sm:text-4xl text-2xl font-bold my-6 text-gray-900'>
+            {article.title}
+        </h1>
+        <p className='mx-auto leading-relaxed test-base mb-4'>
+        {article.content.map((user)=>(
+            <div>{user}</div>
+        ))}
+        </p>
+    </div>
+  )
+}
+
+export default Article
